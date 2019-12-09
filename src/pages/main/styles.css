@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+  margin-top: 50%;
+}
+#logo-main {
+  width: 500px;
+  position: fixed;
+  top: 20%;
+  left: 45%;
+  margin-top: -50px;
+  margin-left: -50px;
+}

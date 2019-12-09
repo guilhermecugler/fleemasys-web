@@ -1,0 +1,22 @@
+.navbar {
+  color: #7159c1;
+  background-color: #7159c1;
+}
+
+.NavbarBrand {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+#logo-texto {
+  align-content: center;
+  align-items: center;
+}
+#btnAcessibilidade {
+  margin-left: 70%;
+}
+
+#imgAcessibilidade {
+  width: 35px;
+}
