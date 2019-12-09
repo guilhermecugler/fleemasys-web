@@ -43,18 +43,18 @@ export default class AluguelAlterar extends Component {
     e.preventDefault();
     const obj = this.state;
 
-    api
-      .put("/aluguel/" + this.props.match.params.id, obj)
-      .then(res => console.log(res.data));
+    api.put("/aluguel/" + this.props.match.params.id, obj).then(res => {
+      this.props.history.push("/aluguel");
 
-    this.props.history.push("/aluguel");
-    window.location.reload();
+      alert(`Alterado com sucesso`);
+      window.location.reload();
+    });
   }
 
   render() {
     const {
-      clienteId,
-      veiculoId,
+      clienteNMFantasia,
+      veiculoPlaca,
       empresaId,
       aluguelVeiculoValor,
       aluguelVeiculoObs,
@@ -76,32 +76,22 @@ export default class AluguelAlterar extends Component {
         </div>
         <Form id="formAluguel" onSubmit={this.onSubmit}>
           <FormGroup>
-            <Label for="Id Cliente">Id Cliente</Label>
+            <Label for="Cliente">Cliente</Label>
             <Input
               type="text"
-              name="clienteId"
-              placeholder="Id Cliente"
-              value={clienteId}
+              name="clienteNMFantasia"
+              placeholder="Cliente"
+              value={clienteNMFantasia}
               onChange={this.changeHandler}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Id Veículo">Id Veículo</Label>
+            <Label for="Veículo">Placa do Veículo</Label>
             <Input
               type="text"
-              name="veiculoId"
-              placeholder="Id Veículo"
-              value={veiculoId}
-              onChange={this.changeHandler}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="Id Empresa">Id Empresa</Label>
-            <Input
-              type="text"
-              name="empresaId"
-              placeholder="Id Empresa"
-              value={empresaId}
+              name="veiculoPlaca"
+              placeholder="Veículo"
+              value={veiculoPlaca}
               onChange={this.changeHandler}
             />
           </FormGroup>
@@ -126,16 +116,6 @@ export default class AluguelAlterar extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Id Finança">Id Finança</Label>
-            <Input
-              type="text"
-              name="financaId"
-              placeholder="Id Finança"
-              value={financaId}
-              onChange={this.changeHandler}
-            />
-          </FormGroup>
-          <FormGroup>
             <Label for="Data do Aluguel">Data do Aluguel</Label>
             <Input
               type="text"
@@ -146,13 +126,13 @@ export default class AluguelAlterar extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for=">Data de Devolução do Aluguel">
+            <Label for="Data de Devolução do Aluguel">
               Data de Devolução do Aluguel
             </Label>
             <Input
               type="text"
               name="aluguelVeiculoDataDevolucao"
-              placeholder=">Data de Devolução do Aluguel"
+              placeholder="Data de Devolução do Aluguel"
               value={aluguelVeiculoDataDevolucao}
               onChange={this.changeHandler}
             />

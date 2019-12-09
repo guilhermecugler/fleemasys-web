@@ -23,12 +23,16 @@ export default class FinancaNovo extends Component {
   onSubmit = e => {
     try {
       e.preventDefault();
-      console.log(this.state);
-      api.post("/financas", this.state).then(res => console.log(res.data));
+      api
+        .post("/financas", this.state)
+        .then(res => {
+          this.props.history.push("/financas");
 
-      this.props.history.push("/financas");
-
-      window.location.reload();
+          window.location.reload();
+        })
+        .catch(res => {
+          alert("Erro ao cadastrar finança!");
+        });
     } catch {
       console.log("erro");
     }

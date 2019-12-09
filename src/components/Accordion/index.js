@@ -12,6 +12,7 @@ const Accordion = () => (
     </Link>
     <Link to="/usuarios">Usuários</Link>
     <Link to="/motoristas">Motoristas</Link>
+    <Link to="/viagens">Viagens</Link>
     <Link to="/clientes">Clientes</Link>
     <Link to="/aluguel">Aluguel de Veículo</Link>
     <Link to="/veiculos">
@@ -21,7 +22,6 @@ const Accordion = () => (
       <Link to="/tecnico">Técnico Manutenção</Link>
       <Link to="/multas">Multa</Link>
     </Link>
-    <Link to="/viagens">Viagens</Link>
     <Link to="/embarquedesembarque">Embarque e Desembarque</Link>
     <Link to="/financas">Finanças</Link>
     <Link to="/empresa">Empresa</Link>

@@ -144,6 +144,17 @@ export default class AluguelNovo extends Component {
             onChange={this.changeHandler}
           />
         </FormGroup>
+        <FormGroup>
+          <Label for="Data de Devolução">Data de Devolução</Label>
+          <MaskedInput
+            mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+            name="aluguelVeiculoDataDevolucao"
+            className="form-control"
+            placeholder="01/01/2020"
+            value={aluguelVeiculoDataDevolucao}
+            onChange={this.changeHandler}
+          />
+        </FormGroup>
         <Button
           color="warning"
           data-toggle-tooltip="tooltip"

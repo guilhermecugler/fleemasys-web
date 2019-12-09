@@ -24,7 +24,7 @@ export default function Login({ history }) {
 
   return (
     <div id="tela-login" className="tela-login">
-      <img align="center" alt="logo" id="logo" src={logo}></img>
+      <img alt="logo" id="logo" src={logo}></img>
       <section className="form-section">
         <div className="form-wrapper">
           <form action="" onSubmit={hundleSubmit}>
@@ -63,17 +63,5 @@ export default function Login({ history }) {
         </div>
       </section>
     </div>
-
-    // <Form inline onSubmit={hundleSubmit}>
-    //     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-    //         <Label for="examplEmail" className="mr-sm-2">E-mail</Label>
-    //         <Input value={usuarioLogin} onChange={e => setUsuario(e.target.value)} type="text" name="email" id="exampleEmail" placeholder="email@exemplo.com" />
-    //     </FormGroup>
-    //     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-    //         <Label for="examplePassword" className="mr-sm-2">Senha</Label>
-    //         <Input value={usuarioSenha} onChange={e => setSenha(e.target.value)} type="password" name="password" id="examplePassword" placeholder="sua senha" />
-    //     </FormGroup>
-    //     <Button type="submit" color="primary">Acessar</Button>{' '}
-    // </Form>
   );
 }

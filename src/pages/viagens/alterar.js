@@ -43,13 +43,12 @@ export default class ViagemAlterar extends Component {
     e.preventDefault();
     const obj = this.state;
 
-    api
-      .put("/viagem/" + this.props.match.params.id, obj)
-      .then(res => console.log(res.data));
+    api.put("/viagem/" + this.props.match.params.id, obj).then(res => {
+      this.props.history.push("/viagens");
 
-    this.props.history.push("/viagens");
-
-    window.location.reload();
+      alert(`Viagem alterada com sucesso`);
+      window.location.reload();
+    });
   }
 
   render() {

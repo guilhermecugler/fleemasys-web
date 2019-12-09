@@ -69,8 +69,8 @@ export default class EmbarqueDesembarque extends Component {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Id Motorista</th>
-                <th>Id Veículo</th>
+                <th>Motorista</th>
+                <th>Veículo</th>
                 <th>Inspeção</th>
                 <th>Observação</th>
                 <th>Data de Entrada</th>
@@ -82,8 +82,8 @@ export default class EmbarqueDesembarque extends Component {
               {this.state.embarquedesembarque.map(embarquedesembarque => (
                 <tr key={embarquedesembarque.edId}>
                   <td>{embarquedesembarque.edId}</td>
-                  <td>{embarquedesembarque.motoristaId}</td>
-                  <td>{embarquedesembarque.veiculoId}</td>
+                  <td>{embarquedesembarque.motoristaNome}</td>
+                  <td>{embarquedesembarque.veiculoPlaca}</td>
                   <td>{embarquedesembarque.edInspecao}</td>
                   <td>{embarquedesembarque.edObs}</td>
                   <td>{embarquedesembarque.ebDataEntrada}</td>

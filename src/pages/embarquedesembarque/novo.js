@@ -9,30 +9,48 @@ export default class EmbarqueDesembarqueNovo extends Component {
     super(props);
 
     this.state = {
-      motoristaId: "",
-      veiculoId: "",
-      edInspecao: "",
-      edObs: "",
-      ebDataEntrada: "",
-      edDataSaida: ""
+      embarqued: [],
+      motoristas: [],
+      veiculos: []
     };
   }
 
+  componentDidMount() {
+    this.handleSelectChange();
+    this.handleSelectChangeVeiculo();
+  }
+
+  handleSelectChange = async () => {
+    const response = await api.get("/motoristas");
+
+    this.setState({ motoristas: response.data });
+  };
+
+  handleSelectChangeVeiculo = async () => {
+    const response = await api.get("/veiculos");
+
+    this.setState({ veiculos: response.data });
+  };
+
   changeHandler = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      embarqued: { ...this.state.embarqued, [e.target.name]: e.target.value }
+    });
   };
 
   onSubmit = e => {
     try {
       e.preventDefault();
-      console.log(this.state);
       api
-        .post("/embarquedesembarque", this.state)
-        .then(res => console.log(res.data));
+        .post("/embarquedesembarque", this.state.embarqued)
+        .then(res => {
+          this.props.history.push("/embarquedesembarque");
 
-      this.props.history.push("/embarquedesembarque");
-
-      window.location.reload();
+          window.location.reload();
+        })
+        .catch(res => {
+          alert("Erro: Não cadastrado!");
+        });
     } catch {
       console.log("erro");
     }
@@ -47,27 +65,52 @@ export default class EmbarqueDesembarqueNovo extends Component {
       ebDataEntrada,
       edDataSaida
     } = this.state;
+
+    const optionMotoristas = this.state.motoristas.map(motorista => (
+      <option
+        onChange={this.changeHandler}
+        name="motoristaNome"
+        key={motorista.motoristaId}
+        value={motorista.motoristaNome}
+      >
+        {motorista.motoristaNome}
+      </option>
+    ));
+
+    const optionVeiculo = this.state.veiculos.map(veiculo => (
+      <option
+        onChange={this.changeHandler}
+        name="veiculoPlaca"
+        key={veiculo.veiculoId}
+        value={veiculo.veiculoPlaca}
+      >
+        {veiculo.veiculoPlaca}
+      </option>
+    ));
+
     return (
       <Form id="formEmbarqueDesembarque" onSubmit={this.onSubmit}>
         <FormGroup>
-          <Label for="Id Motorista">Id Motorista</Label>
+          <Label for="Nome do Motorista">Nome do Motorista</Label>
           <Input
-            type="text"
-            name="motoristaId"
-            placeholder="Id Motorista"
-            value={motoristaId}
             onChange={this.changeHandler}
-          />
+            name="motoristaNome"
+            value={this.state.motoristas.motoristaNome}
+            type="select"
+          >
+            {optionMotoristas}
+          </Input>
         </FormGroup>
         <FormGroup>
-          <Label for="Id Veículo">Id Veículo</Label>
+          <Label for="Placa do Veículo">Placa do Veículo</Label>
           <Input
-            type="text"
-            name="veiculoId"
-            placeholder="Id Veículo"
-            value={veiculoId}
             onChange={this.changeHandler}
-          />
+            name="veiculoPlaca"
+            value={this.state.veiculos.veiculoPlaca}
+            type="select"
+          >
+            {optionVeiculo}
+          </Input>
         </FormGroup>
         <FormGroup>
           <Label for="Inspeção">Inspeção</Label>

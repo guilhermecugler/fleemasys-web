@@ -133,7 +133,6 @@ export default class MotoristaNovo extends Component {
           <FormGroup>
             <Label for="Data Nascimento">Data Nascimento</Label>
             <MaskedInput
-              maxLength="10"
               minLength="10"
               mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
               className="form-control"
@@ -203,7 +202,8 @@ export default class MotoristaNovo extends Component {
         <FormGroup>
           <Label for="Email">Email</Label>
           <Input
-            type="text"
+            type="email"
+            id="exampleEmail"
             name="motoristaEmail"
             placeholder="Email"
             value={motoristaEmail}

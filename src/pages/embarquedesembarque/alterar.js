@@ -45,16 +45,18 @@ export default class EmbarqueDesembarqueAlterar extends Component {
 
     api
       .put("/embarquedesembarque/" + this.props.match.params.id, obj)
-      .then(res => console.log(res.data));
+      .then(res => {
+        this.props.history.push("/embarquedesembarque");
 
-    this.props.history.push("/embarquedesembarque");
-    window.location.reload();
+        alert(`Alterado com sucesso`);
+        window.location.reload();
+      });
   }
 
   render() {
     const {
-      motoristaId,
-      veiculoId,
+      motoristaNome,
+      veiculoPlaca,
       edInspecao,
       edObs,
       ebDataEntrada,
@@ -74,22 +76,22 @@ export default class EmbarqueDesembarqueAlterar extends Component {
         </div>
         <Form id="formEmbarqueDesembarque" onSubmit={this.onSubmit}>
           <FormGroup>
-            <Label for="Id Motorista">Id Motorista</Label>
+            <Label for="Motorista">Motorista</Label>
             <Input
               type="text"
-              name="motoristaId"
-              placeholder="Id Motorista"
-              value={motoristaId}
+              name="motoristaNome"
+              placeholder="Motorista"
+              value={motoristaNome}
               onChange={this.changeHandler}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="Id Veículo">Id Veículo</Label>
+            <Label for="Veículo">Veículo</Label>
             <Input
               type="text"
-              name="veiculoId"
-              placeholder="Id Veículo"
-              value={veiculoId}
+              name="veiculoPlaca"
+              placeholder="Veículo"
+              value={veiculoPlaca}
               onChange={this.changeHandler}
             />
           </FormGroup>
