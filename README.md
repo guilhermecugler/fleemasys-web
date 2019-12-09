@@ -5,6 +5,7 @@ Para instalar as dependências vá até a pasta backend e frontend e dê o coman
 
 Para rodar o servidor, execute na pasta frontend o comando: yarn dev
 
+Prévia do web: https://fleemasys.herokuapp.com/
 Prévia do mobile: https://snack.expo.io/@guilhermecugler/fleemasys    
 
 <p align="center">
