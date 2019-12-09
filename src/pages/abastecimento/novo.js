@@ -24,12 +24,16 @@ export default class AbastecimentoNovo extends Component {
   onSubmit = e => {
     try {
       e.preventDefault();
-      console.log(this.state);
-      api.post("/abastecimento", this.state).then(res => console.log(res.data));
+      api
+        .post("/abastecimento", this.state)
+        .then(res => {
+          this.props.history.push("/abastecimento");
 
-      this.props.history.push("/abastecimento");
-
-      window.location.reload();
+          window.location.reload();
+        })
+        .catch(res => {
+          alert("Erro ao cadastrar");
+        });
     } catch {
       console.log("erro");
     }

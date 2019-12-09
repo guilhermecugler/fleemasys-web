@@ -45,12 +45,12 @@ export default class UsuarioAlterar extends Component {
     e.preventDefault();
     const obj = this.state;
 
-    api
-      .put("/usuarios/" + this.props.match.params.id, obj)
-      .then(res => console.log(res.data));
+    api.put("/usuarios/" + this.props.match.params.id, obj).then(res => {
+      this.props.history.push("/usuarios");
 
-    this.props.history.push("/usuarios");
-    window.location.reload();
+      alert(`Usuário ${usuarioNome} alterado com sucesso`);
+      window.location.reload();
+    });
   }
 
   render() {
